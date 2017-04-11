@@ -1,22 +1,15 @@
-import {Component} from 'react';
+import React from 'react'
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import todoApp from './reducers';
+import App from './components/App';
 
-class TodoBox extends  Component{
-    constructor() {
-        super();
-        this.state={
-            data:[
-                {"id": "0001", "task":"吃饭", "complete": "false"},
-                {"id": "0002", "task":"睡觉", "complete": "false"},
-                {"id": "0003", "task":"打豆豆", "complete": "true"}
-            ]
-        };
-        this.handleTaskDelete=this.handleTaskDelete.bind(this);
-    }
-    handleTaskDelete(taskId){
-        var data=this.state.data;
-        data=data.filter((task)=>task.id!==taskId)
-        this.setState({data})
-    }
-    handle
-}
+let store = createStore(todoApp)
+
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root');
+    )
