@@ -7,7 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     devtool: 'eval-source-map',
 
-    entry: path.join(__dirname, "app", "main.js"),
+    entry: path.join(__dirname, "app", "main.jsx"),
     output: {
         path: path.join(__dirname, "public"),
         filename: "bundle.js"
@@ -53,6 +53,9 @@ module.exports = {
         ]
     },
 
+    resolve:{
+     extensions: [".js", ".json",".jsx"]
+    },
 
     plugins: [
         new webpack.BannerPlugin("Copyright By TWL Matthew."),
